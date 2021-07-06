@@ -27,8 +27,8 @@ stored as textfile
 location '/user/edureka_1548787/projects/project1/routes';
 
 ------------------------------------------------------------------------------------------------------------------------------------------
-
 -- Problem Statement - 1 : Find list of Airports operating in the Country India
+------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Print result on Console
 Select airport_id, name, country from airport where country = 'India';
@@ -48,8 +48,8 @@ INSERT OVERWRITE DIRECTORY "/user/edureka_1548787/projects/output/ps1" ROW FORMA
 Select airport_id, name from airport where country = 'India';
 
 ------------------------------------------------------------------------------------------------------------------------------------------
-
 -- Problem Statement - 2 : Find the list of Airlines having zero stops
+------------------------------------------------------------------------------------------------------------------------------------------
 
 SELECT DISTINCT al.* FROM airlines al JOIN routes r ON al.airline_id = r.airline_id AND stops = 0;
 
@@ -70,9 +70,8 @@ SELECT DISTINCT al.* FROM airlines al JOIN routes r ON al.airline_id = r.airline
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------
-
 -- Problem Statement - 3 : List of Airlines operating with code share
-
+------------------------------------------------------------------------------------------------------------------------------------------
 Select distinct al.* from airlines al JOIN routes r ON al.airline_id = r.airline_id and r.codeshare = 'Y';
 
 -- Store result in table with stores as RCFile
@@ -91,7 +90,8 @@ Select distinct al.* from airlines al JOIN routes r ON al.airline_id = r.airline
 ------------------------------------------------------------------------------------------------------------------------------------------
 -- Problem Statement - 4 : Which country (or) territory having highest Airports
 
-SELECT country, count(airport_id) as num_of_airports from airports group by country order by num_of_airports desc limit 1;
+SELECT country, count(airport_id) as num_of_airports
+    from airports group by country order by num_of_airports desc limit 1;
 
 -- Store result in table
 CREATE TABLE RESULT_PS4

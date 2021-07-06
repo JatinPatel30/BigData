@@ -21,7 +21,7 @@ SELECT_ALL_COLUMN_AIRLINES = FOREACH LOAD_AIRLINES GENERATE airline_id, name, al
 SELECT_ALL_COLUMN_ROUTES = FOREACH LOAD_ROUTES GENERATE airline, airline_id, source_airport, source_airport_id, destination_airport, destination_airport_id, codeshare, stops, equipment;
 
 ------------------------------------------------------------------------------------------------------------------------------------------
-Problem Statement - 1 : Find list of Airports operating in the Country India --------------------------------------------
+-- Problem Statement - 1 : Find list of Airports operating in the Country India --------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------------
 FILTER_AIRPORTS_BY_COUNTRY_INDIA = FILTER SELECT_ALL_COLUMN_AIRPORTS by country == 'India';
 
@@ -31,7 +31,7 @@ INDIAN_AIRPORTS = FOREACH FILTER_AIRPORTS_BY_COUNTRY_INDIA GENERATE name;
 -- STORE INDIAN_AIRPORTS into 'Indian_Airports';
 
 ------------------------------------------------------------------------------------------------------------------------------------------
-Problem Statement - 2 : Find the list of Airlines having zero stops ---------------------------------
+-- Problem Statement - 2 : Find the list of Airlines having zero stops ---------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------------
 SELECT_AIRLINE_REQUIRE_COLUMNS = FOREACH SELECT_ALL_COLUMN_AIRLINES GENERATE airline_id, name;
 SELECT_ROUTE_REQUIRE_COLUMNS = FOREACH SELECT_ALL_COLUMN_ROUTES GENERATE airline_id, stops;
@@ -41,7 +41,7 @@ JOIN_AIRLINES_ROUTES = JOIN SELECT_AIRLINE_REQUIRE_COLUMNS BY airline_id, DISTIN
 DUMP JOIN_AIRLINES_ROUTES;
 
 ------------------------------------------------------------------------------------------------------------------------------------------
-Problem statement - 3 : List of Airlines operating with code share -----------------------------------------------
+-- Problem statement - 3 : List of Airlines operating with code share -----------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 SELECT_AIRLINE_REQUIRE_COLUMNS = FOREACH SELECT_ALL_COLUMN_AIRLINES GENERATE airline_id, name;
