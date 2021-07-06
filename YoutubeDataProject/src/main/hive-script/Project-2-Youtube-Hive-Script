@@ -1,0 +1,28 @@
+
+-- Create table Youtube
+
+CREATE EXTERNAL TABLE IF NOT EXISTS Youtube_Data (video_id String, uploader String, interval_days INT, category String, length INT, /
+ views INT, ratings float, num_of_rating INT, num_of_comments INT, related_videos string) /
+ COMMENT 'Youtube video data'
+ row format delimited /
+ fields terminated by '\t' /
+stored as textfile location '/user/edureka_1548787/projects/project2/youtubedata';
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+-- Problem Statment 1 : Find out the top 5 categories with maximum number of videos uploaded
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Select category, count(*) as num_of_videos from Youtube_Data group by category order by num_of_videos desc limit 5;
+
+---------------------------------------------------------------------------------------------------------------------------------------
+-- Problem Statment 2 : Find out the top 10 rated videos.
+---------------------------------------------------------------------------------------------------------------------------------------
+select * from Youtube_Data order by ratings limit 10;
+
+---------------------------------------------------------------------------------------------------------------------------------------
+-- Problem Statment 3 : Find out the most viewed videos
+---------------------------------------------------------------------------------------------------------------------------------------
+SELECT * FROM Youtube_Data order by views DESC limit 1;
+-- SELECT * FROM Youtube_Data where views in (select max(views) over (partition by category order by views DESC) as maximum from Youtube_data order by maximum desc limit 1);
+
