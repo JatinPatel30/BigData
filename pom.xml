@@ -12,6 +12,7 @@
     <modules>
         <module>AirlinesProject</module>
         <module>YoutubeDataProject</module>
+        <module>BookDataProject</module>
     </modules>
 
     <properties>
