@@ -67,6 +67,7 @@ DUMP LIMIT_1_RECORD;
 -- Problem Statement - 5 : Find the list of Active Airlines in United state
 ------------------------------------------------------------------------------------------------------------------------------------------
 
-ACTIVE_AIRLINES = FILTER SELECT_ALL_COLUMN_AIRLINES BY active == 'Y';
+SELECT_AIRLINE_REQUIRE_COLUMNS = FOREACH LOAD_AIRLINES GENERATE airline_id, name, active;
+ACTIVE_AIRLINES = FILTER SELECT_AIRLINE_REQUIRE_COLUMNS BY active == 'Y';
 DUMP ACTIVE_AIRLINES;
 

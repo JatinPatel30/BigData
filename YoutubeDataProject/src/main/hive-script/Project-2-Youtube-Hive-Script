@@ -23,6 +23,12 @@ select * from Youtube_Data order by ratings limit 10;
 ---------------------------------------------------------------------------------------------------------------------------------------
 -- Problem Statment 3 : Find out the most viewed videos
 ---------------------------------------------------------------------------------------------------------------------------------------
+
+-- Query - 1:
 SELECT * FROM Youtube_Data order by views DESC limit 1;
--- SELECT * FROM Youtube_Data where views in (select max(views) over (partition by category order by views DESC) as maximum from Youtube_data order by maximum desc limit 1);
+
+-- Query - 2:
+WITH sub_query AS(
+   select max(views) over (partition by category order by views DESC) as maximum_views from Youtube_data order by maximum_views desc limit 1
+) select yd.* from  Youtube_data yd JOIN sub_query sq ON yd.views = sq.maximum_views;
 

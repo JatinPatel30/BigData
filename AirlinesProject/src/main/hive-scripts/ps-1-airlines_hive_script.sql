@@ -1,7 +1,7 @@
 
 -- Create table Airport
 
-create table airports(airport_id INT, name STRING, city STRING,country STRING,iata_faa STRING,icao STRING, latitude DECIMAL(9,6),longitude DECIMAL(9,6), altitude INT, timezone DECIMAL(4,2), dst CHAR(1), tz STRING)
+create external table airports(airport_id INT, name STRING, city STRING,country STRING,iata_faa STRING,icao STRING, latitude DECIMAL(9,6),longitude DECIMAL(9,6), altitude INT, timezone DECIMAL(4,2), dst CHAR(1), tz STRING)
 row format delimited
 fields terminated by ','
 stored as textfile
@@ -9,7 +9,7 @@ location '/user/edureka_1548787/projects/project1/airports';
 ------------------------------------------------------------------------------------------------------------------------------------------
 -- Create table Airlines
 
-Create table airlines(airline_id Int,name STRING,alias STRING,iata_faa String,icao String,callsign string,country String,active char(1))
+Create external table airlines(airline_id Int,name STRING,alias STRING,iata_faa String,icao String,callsign string,country String,active char(1))
 row format delimited
 fields terminated by ','
 stored as textfile
@@ -19,7 +19,7 @@ location '/user/edureka_1548787/projects/project1/airlines';
 -- Create table RouteData
 
 
-create table routes(airline String, airline_id INT, source_airport String, source_airport_id INT, destination_airport String, 
+create external table routes(airline String, airline_id INT, source_airport String, source_airport_id INT, destination_airport String,
 destination_airport_id INT, codeshare CHAR(1), stops INT, equipment String)
 row format delimited
 fields terminated by ','
